@@ -110,19 +110,40 @@ const { title, href, description, image, alt, colour, align = 'top' } = Astro.pr
   }
 
   /* Scroll-driven reveal, using the original's animation-timeline: view().
-     Browsers without support simply show the card — no JavaScript fallback
-     needed, and nothing is ever left invisible. */
+     Browsers without support simply show the card.
+
+     The hidden state lives in the keyframes, NOT on .project-card itself, and
+     that is deliberate — do not move `opacity: 0` back onto the element. If the
+     animation is ever dropped, the card has to still be visible.
+
+     This bit us in production once. The CSS minifier folded
+     `animation: project-card-reveal ease forwards` and
+     `animation-timeline: view()` into one `animation: forwards
+     project-card-reveal view()`. A timeline inside the `animation` shorthand is
+     invalid CSS in every browser, so the whole declaration was discarded — and
+     with `opacity: 0` sitting on the element, every project card on the
+     homepage rendered invisible while staying clickable. Dev mode doesn't
+     minify, so it only appeared once deployed.
+
+     Longhands, with the initial state in the keyframes: now the worst a future
+     minifier can do is drop the animation and leave the cards plainly visible. */
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
       .project-card {
-        transform: scale(0.8);
-        opacity: 0;
-        animation: project-card-reveal ease forwards;
+        animation-name: project-card-reveal;
+        animation-duration: auto;
+        animation-timing-function: ease;
+        animation-fill-mode: both;
         animation-timeline: view();
         animation-range: entry;
       }
 
       @keyframes project-card-reveal {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+
         to {
           transform: scale(1);
           opacity: 1;

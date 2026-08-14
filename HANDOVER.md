@@ -22,6 +22,36 @@ reproduced deliberately, including choices you might otherwise question. Do not
 
 ---
 
+## Deployment
+
+**Live at https://gregjackson-design.pages.dev** (14 August 2026).
+
+- Repo: `github.com/gregjacksondesign/gregjackson-design`, public, branch `main`.
+- Cloudflare Pages, connected to Git. Framework preset Astro, build command
+  `npm run build`, output `dist`. `.nvmrc` pins Node 22.
+- Every push to `main` rebuilds automatically. Branches get preview URLs.
+- **Custom domain is live.** Both `gregjackson.design` and
+  `www.gregjackson.design` are attached to the Pages project, Active, with SSL
+  issued. Verified serving the static site (including deep links like
+  `/experience/`) on 14 August 2026. Cloudflare wrote the DNS records itself —
+  the "Complete DNS setup" panel asking for a manual CNAME appeared briefly but
+  resolved on its own within a minute or two, so don't rush to add records by
+  hand if you ever re-do this.
+- WordPress was never on this domain — it lives at
+  `gregjacksondesign.wpcomstaging.com`. So going live involved no cutover and no
+  downtime; the domain went from resolving to nothing to serving the new site.
+- `www` serves the site directly rather than redirecting to the apex, so both
+  hostnames return identical content. Canonical tags point at
+  `https://gregjackson.design` (from `site` in `astro.config.mjs`), which is what
+  tells search engines which one counts. Optional tidying: a Cloudflare redirect
+  rule to send `www` → apex with a 301.
+
+Note `astro.config.mjs` sets `site: 'https://gregjackson.design'`, so canonical
+URLs on the `.pages.dev` build already point at the real domain. That is correct
+and stops the preview being indexed as a duplicate — don't "fix" it.
+
+---
+
 ## Where things stand
 
 **Done:**
