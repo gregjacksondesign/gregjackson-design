@@ -5,3 +5,8 @@ dist/
 *.log
 .env
 .env.production
+
+# Visual reference screenshots — working material, not part of the site.
+# Kept out of git deliberately: the repo is public, and these are other
+# people's design work collected for inspiration.
+Site-Inspo/
