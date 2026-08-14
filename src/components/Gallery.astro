@@ -1,0 +1,83 @@
+---
+// Replaces the Jetpack Slideshow block from the WordPress site.
+//
+// The original was a JavaScript carousel (Swiper). This is a scroll-snapping
+// strip instead: no JavaScript, no dependency to keep updated, swipeable on
+// touch, scrollable with a trackpad, and reachable by keyboard. It also means
+// every image is discoverable — a carousel hides all but one, which for
+// portfolio evidence is the wrong trade.
+
+interface Item {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  items: Item[];
+  label?: string;
+}
+
+const { items, label = 'Image gallery' } = Astro.props;
+---
+
+<div
+  class="gallery"
+  role="group"
+  aria-label={label}
+  tabindex="0"
+>
+  {items.map((item) => (
+    <figure class="gallery__item">
+      <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+      {item.caption && <figcaption>{item.caption}</figcaption>}
+    </figure>
+  ))}
+</div>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78%, 30rem);
+    gap: var(--space-24);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-24);
+    /* Bleed to the page edge so it reads as a strip that continues, which is
+       the affordance that tells people to scroll. */
+    scrollbar-width: thin;
+  }
+
+  .gallery:focus-visible {
+    outline: 2px solid var(--colour-accent);
+    outline-offset: 4px;
+  }
+
+  .gallery__item {
+    scroll-snap-align: start;
+    margin: 0;
+  }
+
+  .gallery__item img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .gallery__item figcaption {
+    margin-top: var(--space-8);
+    font-size: var(--size-small);
+    color: var(--colour-text-muted);
+  }
+
+  /* On wide screens with only a few images, lay them out rather than scroll. */
+  @media (min-width: 64rem) {
+    .gallery {
+      grid-auto-flow: row;
+      grid-auto-columns: auto;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      overflow-x: visible;
+    }
+  }
+</style>

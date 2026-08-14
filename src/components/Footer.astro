@@ -1,0 +1,34 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <hr class="separator" />
+  <div class="site-footer__inner">
+    <p>Greg Jackson &middot; UX design &middot; {year}</p>
+    <p>
+      <a href="http://www.linkedin.com/in/gregory-w-jackson" rel="noopener" target="_blank">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--gap-block);
+    padding-bottom: var(--gap-block);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap-inner);
+    flex-wrap: wrap;
+    padding-top: var(--gap-inner);
+    font-size: var(--size-small);
+    color: var(--colour-text-muted);
+  }
+
+  .site-footer__inner p {
+    margin: 0;
+  }
+</style>

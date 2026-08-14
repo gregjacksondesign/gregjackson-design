@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects.js';
+---
+
+<Base
+  title="gregjackson.design – UX design portfolio"
+  description="Greg Jackson — Lead UX Designer with over 12 years of experience in financial services, sustainable manufacturing and educational tools. Currently Head of Design at Stockopedia."
+>
+  <section class="hero">
+    <h1>Greg Jackson</h1>
+    <p class="hero__intro">
+      Lead UX Designer with over 12 years of experience in financial services,
+      sustainable manufacturing, and educational tools. I’m currently Head of
+      Design at Stockopedia, where I help private investors make sense of the
+      complex world of financial markets.
+    </p>
+    <p>
+      <a class="button" href="/experience/"><span>Design experience &nbsp;&rarr;</span></a>
+    </p>
+  </section>
+
+  <section class="projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Projects</h2>
+    <div class="projects__grid">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* The intro sits at --size-medium (24px on desktop), so it needs a wider
+     container than 16px body copy to reach the same measure. 48rem puts it at
+     roughly 68 characters per line. For reference: the original WordPress hero
+     ran to about 84 characters, which read long, and 40rem here read short at
+     about 53. */
+  .hero {
+    padding-block: var(--gap-block);
+    max-width: 48rem;
+  }
+
+  .hero__intro {
+    font-size: var(--size-medium);
+    margin-block: var(--gap-inner);
+  }
+
+  .projects {
+    padding-bottom: var(--gap-block);
+  }
+
+  .projects h2 {
+    margin-bottom: var(--gap-inner);
+  }
+
+  /* Three across on desktop, two on tablet, one on mobile. auto-fit means the
+     last row fills naturally — the original needed empty placeholder columns
+     to achieve this. */
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--gap-block) var(--gap-inner);
+  }
+
+  @media (min-width: 64rem) {
+    .projects__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

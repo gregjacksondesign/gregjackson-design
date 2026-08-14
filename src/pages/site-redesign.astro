@@ -1,0 +1,97 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Step from '../components/Step.astro';
+import Quote from '../components/Quote.astro';
+import Figure from '../components/Figure.astro';
+import Gallery from '../components/Gallery.astro';
+---
+
+<CaseStudy title="Stockopedia redesign">
+
+  <Step number="01" title="The problem">
+    <p><strong>User experience and navigation:</strong> Users struggled to navigate the many features that had been bolted onto the product over eight years. Navigation links were duplicated in an attempt to compensate for poor information architecture, which made the situation worse. Users often cancelled their subscription, feeling overwhelmed by the site, stating “It was far more than I needed.”</p>
+    <p><strong>Visual design and competitiveness:</strong> The site’s visual design was outdated, putting it at a disadvantage compared to newer, more modern tools available on the market to private investors.</p>
+    <p><strong>Technical limitations and mobile responsiveness:</strong> The site was built on old, slow, and unreliable technologies that were not scalable, hindering performance and user satisfaction. The site only worked on desktop, which was at odds with private investors’ growing need to access financial information on the go.</p>
+    <p><strong>Accessibility:</strong>The site did not meet W3C size and contrast requirements for accessibility, making it difficult for many users to read.</p>
+  </Step>
+
+  <Step number="02" title="Research">
+    <p>When I joined Stockopedia, a redesign of the website had been in progress for two years. Nothing had been released to subscribers, and the site hadn’t undergone user testing. In my first week, we conducted user tests to gather overdue feedback. The results were eye-opening for the team, revealing significant flaws in the redesign:</p>
+    <Quote><p><em>“The site was meant to be focused on proprietary rankings, screens, and experts recommendations, and less about general market conditions and news. But it’s difficult to determine that when initially viewing the site. It’s frustrating.”</em></p></Quote>
+    <Quote><p><em>“I’ve used the old site for many years, and I love what you do, but I’m worried about the direction you’re heading in, I’m concerned you will ruin the site.”“I’ve used the old site for many years, and I love what you do, but I’m worried about the direction you’re heading in, I’m concerned you will ruin the site.”</em></p></Quote>
+    <Quote><p><em>“It feels like you just tried to make it pretty … on the old site everything was on one page, now there is loads of unnecessary scrolling.”</em></p></Quote>
+    <Figure src="/images/v1-home-edited.png" alt="The homepage of the in-flight redesign, before user testing." caption="Homepage of the in-flight redesign" wide />
+    <h3 class="type-h4">Benchmarking the live site</h3>
+    <p>The team hadn’t conducted user testing on the live site either, which meant that improvements were based on guesswork rather than evidence. To address this and establish a usability benchmark, I initiated a series of tests with customers. This provided valuable insights into their preferences, pain points, and areas of frustration.</p>
+    <Figure src="/images/kohana-home-timer.png" alt="The homepage of the live Stockopedia site as it stood before the redesign." caption="Homepage of the live site" wide />
+    <h4>Key insights</h4>
+    <p><strong>More isn’t always better:</strong> Numerous features had been added to the site under the assumption that “more equals better”. The team believed this approach would make users feel they were receiving greater value for money. However, newer customers only used a fraction of Stockopedia’s features, and as a result felt the product wasn’t suited to their needs.</p>
+    <Quote><p><em>“It’s very feature rich. It’s more than I need to get the most out of what I do with my investing.”</em></p></Quote>
+    <Quote><p><em>“It’s a really distracting page, there is too much information!”</em></p></Quote>
+    <Quote><p><em>“Once you manage to get to grips with it, I think it’s very good. But there is lots of valuable stuff in there I haven’t used for ages.”</em></p></Quote>
+    <p><strong>Analysing feature usage:</strong> There was a long-tail of feature with very low usage. We needed to focus our efforts on enhancing the quality of the core features that were used every day.</p>
+    <Figure src="/images/feature-usage-unique-views.png" alt="A chart of unique views per feature, showing a long tail of features with very low usage." wide />
+    <p><strong>Poor discoverability:</strong> As features were released, little thought was given to the information architecture of the site. Large dropdown menus contained duplicate items, with pages containing multiple levels of nested tabs making navigation and recall of features frustrating for users.</p>
+    <Quote><p><em>“I do struggle to get around the existing site, I’ve just gotten used to the things I go to often.”</em></p></Quote>
+    <Quote><p><em>“The depth of the tools available is impressive. Given enough time, outside the context of a user test, I think I could use it efficiently.”</em></p></Quote>
+    <Quote><p><em>“Because of the proprietary names of some of the tools I found it less than intuitive to locate particular things like stock rankings.”</em></p></Quote>
+  </Step>
+
+  <Step number="03" title="Ideation">
+    <h3 class="type-h4">Design Sprint</h3>
+    <p>In response to user testing feedback on both the existing website and the ongoing redesign, we decided to pause development and conduct a week-long design sprint. Following the <a href="https://www.gv.com/sprint/">Google Ventures</a> framework, we assembled a cross-functional team, including the CEO/founder, product analysts, engineers, and designers, to collaboratively address the issues identified.</p>
+    <Gallery items={[{ src: "/images/board-large-edit-141866557-e1728408455418.jpg", alt: "A wall of notes and sketches from the design sprint." }, { src: "/images/img_1965-1406614185-e1728408467562.jpg", alt: "The team working together during the design sprint." }, { src: "/images/img_1980-3175015336-e1728408487396.jpg", alt: "The team working together during the design sprint." }, { src: "/images/img_1994-2739410672-e1728408550975.jpg", alt: "The team working together during the design sprint." }]} />
+    <p>At the end of the sprint, I synthesised the data collected from user testing, team discussions, site usage analytics, and competitor research to create a wireframe for user testing. Our primary focus was on enhancing the site’s information architecture and discoverability, rather than introducing new features. The central question guiding our efforts was: “How can we accelerate the user’s journey to value?”</p>
+    <Figure src="/images/redesign-wire-1.png" alt="A wireframe of the proposed site structure, produced at the end of the design sprint." wide />
+  </Step>
+
+  <Step number="04" title="Testing">
+    <p>I tested the same key tasks on the wireframe that I previously tested on the live site. To facilitate easier comparisons, I created a quantitative scorecard in addition to taking qualitative notes. The scoring system was as follows:</p>
+    <Figure src="/images/screenshot-2024-09-16-at-13.34.11.png" alt="A quantitative scoring table comparing task completion between the live site and the new wireframe." wide />
+    <p>Overall, we observed an improvement in task completion rates compared to the benchmark of the current live site. Positive qualitative feedback from participants confirmed that we were on the right track.</p>
+    <Quote><p><em><em>“I can see quite a few things that have been changed and improved. It’s got all of the things that I am looking for.”</em></em></p></Quote>
+    <Quote><p><em>“I like it – seems cleaner somehow.”</em></p></Quote>
+    <Quote><p><em>“I go on lots of websites and they aren’t very intuitive, but this one is.”</em></p></Quote>
+    <p>Following a four-day workshop, the proposed design was not perfect. In our attempt to simplify the navigation, some top-level categories became too broad, resulting in large and vaguely labeled content buckets.</p>
+    <Quote><p><em>“Everything seemed to be stuffed into the ‘Browse’ folder.”</em></p></Quote>
+    <p>We also removed industry-specific terminology to appeal to novice investors. We found renaming “Screens” to “Filters” negatively impacted task completion rates. Our “best-fit” customers understood the term “Screens” in an investing context, and by trying to appeal to novice investors we risked alienating them, so we reverted this change.</p>
+  </Step>
+
+  <Step number="05" title="Refinement">
+    <p>We refined the site architecture through two additional rounds of user testing. The initial Design Sprint and testing laid the foundation for the site’s structure, which was successfully released and remains live today.</p>
+    <Quote><p><em>“It was straightforward to navigate the site, I didn’t feel overwhelmed with options.”</em></p></Quote>
+    <Quote><p><em>“The website is in it’s early stages, but they’ve arranged everything into a tidy order where content can be accessed quickly.”</em></p></Quote>
+    <Quote><p><em>“The wireframe was easily navigable with a categorical design based on areas of interest.”</em></p></Quote>
+    <p>The CEO was confident in the test results, and gave the green light to proceed with the implementation. He stated:</p>
+    <Quote><p><em>“In my view we can now confidently say that we have the following:</em></p><ol><li><em>Qualitative feedback from current site subscribers that the new nav is ‘simpler’, ‘intuitive’ and ‘easier to navigate’.</em></li><li><em>Quantitative evidence that the new navigation/structure leads to the correct results faster than the current site.</em></li><li><em>Internal belief that the new nav maps better to perceived customer value (learn, discover, analyse, track etc).”</em></li></ol></Quote>
+    <p>User testing eliminated guesswork, helping to motivate and align the team. A struggling redesign that took two years finally gained direction, and we successfully launched a beta version of the application six months later.</p>
+    <Figure src="/images/desktop-today-1.png" alt="The redesigned Today page on desktop." wide />
+    <Figure src="/images/desktop-folios.png" alt="The redesigned Folios page on desktop." wide />
+    <Figure src="/images/reports-laptop.png" alt="A Stockopedia stock report shown on a laptop." wide />
+  </Step>
+
+  <Step number="06" title="Results">
+    <p>We successfully migrated all existing users to the new version of the site using an opt-in mechanism. The new version of the site actually had fewer features, indicating subscribers preferred the new experience.</p>
+    <Quote><p><em>“The team have made the data more readable and more accessible. This allows individuals to select their own strategies and test them against the strategies of the giants of investing.The tools are simple to use and with pre recorded and live tutorials I have significantly improved my knowledge of investment process and as such my returns.”</em><br /><em>– TrustPilot (March, 2024)</em></p></Quote>
+    <p>“Ease of use” is now the second most commonly stated comment from Promoters via NPS. We are maintaining a “World class” NPS of <strong>≈</strong>50. Example feedback includes:</p>
+    <Quote><p><em>“The concise display and analysis of vast amounts of information in an easy to interpret layout & interface.”</em></p></Quote>
+    <Quote><p><em>“The structure of the website is well designed and easy to understand. This is complimented by the useful series of seminars.”</em></p></Quote>
+    <p>Since the release of the new application, we’ve won several investment awards, as voted for by the UK private investor community:</p>
+    <Figure src="/images/investor-mag.png" alt="Stockopedia featured in an investment magazine." wide />
+    <Figure src="/images/money-week-award.jpg" alt="The MoneyWeek award won by Stockopedia." wide />
+    <Figure src="/images/gmg-winner.png" alt="An industry award won by Stockopedia." wide />
+    <p>The new website has enabled faster product development, due to the improved technical infrastructure. It was built from scratch as a modern “single-page application” backed by a RESTful API. Moving away from the original PHP application allowed for faster iteration and supported more modern web technologies.</p>
+    <p>We developed a <a href="https://web.dev/articles/what-are-pwas">Progressive Web App</a> to enable users to access the site on mobile devices. The design was optimised to ensure a good experience across all resolutions and was adopted by 25% of our user base.</p>
+  </Step>
+
+  <Step number="07" title="Learnings">
+    <p>I wasn’t at Stockopedia when the decision was made redesign the site from scratch, rather than iterate on the live site. I would be cautious about taking this approach in the future for several reasons:</p>
+    <ol>
+      <li><strong>Lack of visibility:</strong> Subscribers saw no improvements to the live site for a long time, as development was focused on the new application. This left them feeling frustrated and ignored.</li>
+      <li><strong>Price rise challenges:</strong> The absence of visible improvements to the service made it hard to justify price increases during the three-year development period. Once the new site was released, there was pressure from the board to implement significant price rises to compensate for this, which was difficult to manage.</li>
+      <li><strong>Unclear scope:</strong> It wasn’t clear if we were aiming for feature parity with the existing site or trying to improve upon it. The longer the redesign took, the more pressure there was to release new functionality. This lack of clarity complicated decision-making and prioritisation.</li>
+      <li><strong>Managing the migration:</strong> Migrating 11,000 users to the new site was challenging. We decided upon a softer, opt-in process, but with mostly long-term subscribers who were 60+ years of age, we did encounter change aversion. Iterating on the live site would have mitigated this issue.</li>
+    </ol>
+    <p>In future projects, I would advocate for an iterative approach, ensuring continuous user engagement and visible improvements to maintain user satisfaction and justify development efforts.</p>
+  </Step>
+</CaseStudy>

@@ -1,0 +1,19 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Figure from '../components/Figure.astro';
+import Gallery from '../components/Gallery.astro';
+---
+
+<CaseStudy title="M2030 and 2degrees">
+  <h2 class="type-h3">Manufacture 2030</h2>
+  <p>I led the design of the Manufacture 2030 platform, evolving it from the initial concept of driving corporate sustainability. I established brand guidelines and created a component library to streamline the design process and ensure consistency.</p>
+  <p>The customer journey consisted of a guided onboarding to set up their facility, personalise their energy spend, and select actions to improve energy efficiency. To monitor progress, I designed a Kanban-style central dashboard that provided a clear and concise overview of tasks and their status.</p>
+  <p>I also created custom illustrations to give the platform a unique and approachable feel. This was important to ensure adoption within the facilities.</p>
+  <Figure src="/images/login-tablet.png" alt="The Manufacture 2030 login screen on a tablet, with custom illustration." caption="UI design and custom illustrations created for the platform’s login page." wide />
+  <Gallery items={[{ src: "/images/m2030-step-1.png", alt: "Manufacture 2030 onboarding, step one: setting up a facility." }, { src: "/images/m2030-step-2-1.png", alt: "Manufacture 2030 onboarding, step two: entering energy spend." }, { src: "/images/m2030-step-3-1.png", alt: "Manufacture 2030 onboarding, step three: selecting efficiency actions." }]} />
+  <Figure src="/images/action-detail-1440-1.png" alt="The detail view for an efficiency action on the Manufacture 2030 dashboard." wide />
+  <h3>2degrees</h3>
+  <p>I worked on the 2degrees platform and public-facing website for the sustainable business community. Key milestones included working with major suppliers such as Asda-Walmart, GSK, and Unilever, being named in Sustainia’s Top 100, and joining the UN Global Opportunity Explorer. For each corporate partner, I created custom UI themes that aligned with their brand guidelines, ensuring consistent colour palettes and imagery.</p>
+  <Figure src="/images/rbs-wireframe.png" alt="A low-fidelity wireframe for a 2degrees community homepage." caption="Low-fidelity design for an example community homepage." wide />
+  <Figure src="/images/rbs-community-1440.png" alt="The finished RBS sustainable community homepage." caption="High-fidelity UI design for the RBS sustainable community homepage." wide />
+</CaseStudy>

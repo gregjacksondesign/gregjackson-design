@@ -1,0 +1,74 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Step from '../components/Step.astro';
+import Quote from '../components/Quote.astro';
+import Figure from '../components/Figure.astro';
+import Gallery from '../components/Gallery.astro';
+---
+
+<CaseStudy title="Design system">
+
+  <Step number="01" title="The problem">
+    <p><strong>Two versions of the site:</strong> The live version of the site and the in-progress redesign had different visual design styles. There were very few design files to reference, as most ideas were implemented directly into code.</p>
+    <p><strong>Inconsistent design practices:</strong> A few Photoshop files had been created for desktop designs, but they lacked any specifications for implementation. Mobile designs were largely overlooked, leading to layouts that broke at lower resolutions. The Bootstrap toolkit was used but customised inconsistently, leading to a disjointed user experience. There were no clear rules or guidelines to ensure components were used consistently.</p>
+    <p><strong>Visual clutter:</strong> The interface was overwhelmed by childish graphics and colours, creating a cluttered appearance with low information density. Childish illustrations and animated GIFs were overused in an attempt to convey brand personality. This was inappropriate for a premium financial research tool.</p>
+    <p><strong>Colour inconsistencies:</strong> The same components appeared in variety of colours without a clear rationale as to why, this caused confusion regarding their function. Colour contrast was not considered, making the site difficult to read and inaccessible.</p>
+  </Step>
+
+  <Step number="02" title="Review existing sites">
+    <h3>Live site</h3>
+    <ul>
+      <li>The site didn’t work below small desktop resolutions, resulting in awkward horizontal scrolling.</li>
+      <li>The use of colour was inconsistent and contrast ratios didn’t meet W3C guidelines.</li>
+      <li>The interface looked dated and the childish graphics weren’t suitable for the target audience.</li>
+      <li>On a positive note, the logged in experience had good information density on data tables and StockReport pages.</li>
+    </ul>
+    <Gallery items={[{ src: "/images/kohana-home-timer.png", alt: "The homepage of the live Stockopedia site as it stood before the redesign." }, { src: "/images/kohana-discuss.png", alt: "The discussion feature on the original Stockopedia site." }, { src: "/images/kohona-watchlist.png", alt: "The watchlist on the original Stockopedia site." }, { src: "/images/kohana-valuation-tool.png", alt: "The valuation tool on the original Stockopedia site." }, { src: "/images/kohana-screener-1592246240-e1728317427607.png", alt: "The stock screener on the original Stockopedia site." }]} />
+    <h4>In-flight redesign</h4>
+    <ul>
+      <li>The team had attempted to create a more modern feel by adding more decorative graphics and colour, but this increased the childish appearance of the product.</li>
+      <li>Pages felt visually cluttered and had very low information density.</li>
+      <li>Colours didn’t meet accessibility contrast requirements, resulting in text and data visualisations that were hard to read.</li>
+      <li>Selected and disabled states were unclear.</li>
+      <li>Pages lacked a clear visual hierarchy or rhythm.</li>
+    </ul>
+    <Gallery items={[{ src: "/images/v1-folio-overview-2872731197-e1728317535980.png", alt: "The portfolio overview in the first version of the redesign." }, { src: "/images/v1-home-3023164958-e1728317543891.png", alt: "The home page in the first version of the redesign." }, { src: "/images/v1-transaction-modal-2503138583-e1728317551408.png", alt: "The transaction dialog in the first version of the redesign." }, { src: "/images/v1-stockchecker-552173400-e1728317561528.png", alt: "The StockChecker in the first version of the redesign." }]} />
+  </Step>
+
+  <Step number="03" title="Improving workflows">
+    <p><strong>Process enhancements:</strong></p>
+    <ul>
+      <li>From the first project I worked on, all new product increments had high-fidelity design files across several resolutions (1440px, 1024px, 768px, 375px).</li>
+      <li>Initially, I created high-fidelity designs in Sketch, exporting these to Zeplin for file management and developer handover. When I hired a UI Designer, we switched to Figma. It was better suited for designer collaboration and had an inbuilt Developer Mode. Using a single tool also simplified the design process.</li>
+    </ul>
+    <p><strong>Design system implementation:</strong></p>
+    <ul>
+      <li>We did one initial release to update some of our basic styles (fonts, colours, etc.). After this, we chose to update components as they were required to reduce risk and not tie up resources for an extended period.</li>
+      <li>New UI elements were documented in the design system, and components were created in Figma. This ensured designs were consistent and increased the efficiency of the design process.</li>
+      <li>The engineering team translated these components into a front-end development tool called StoryBook. The design and front-end teams met fortnightly to review new components and ensure Figma and Storybook were kept in sync.</li>
+    </ul>
+  </Step>
+
+  <Step number="04" title="Design guide">
+    <p>The design system at Stockopedia has evolved into a comprehensive set of guidelines. Below is a small excerpt from the documentation I created for the redesign. Updates to our design system are now handled by our UI designer, while I oversee and review all new components.</p>
+    <Figure src="/images/colour-palette-1.png" alt="The Stockopedia colour palette, documented as swatch tables with usage rules." wide />
+    <Figure src="/images/breadcrumb-pager.png" alt="Design system documentation for the breadcrumb and pager components." wide />
+    <Figure src="/images/typography-1.png" alt="The Stockopedia type scale, documented with sizes and usage." wide />
+    <Figure src="/images/global-nav-desktop.png" alt="The global navigation component as designed for desktop." wide />
+  </Step>
+
+  <Step number="05" title="Results">
+    <p><strong>Design Philosophy:</strong> As a data-rich financial application, information density and clarity are paramount. Financial markets are inherently noisy and confusing, making it essential for the design to convey a sense of stability and bring key insights directly to the user, rather than requiring them to search for it.</p>
+    <p><strong>Design System Evolution:</strong> While a design system is always a work in progress, the design function has advanced significantly since I joined Stockopedia. Design is now the second most frequently cited positive feedback from promoters completing the NPS survey.</p>
+    <p><strong>Key Product Differentiator:</strong> In a recent product positioning workshop, the business identified “Quality of Design” as one of our key unique attributes. It forms one of the four key value pillars that differentiate us from our competitors.</p>
+    <Quote><p><em>“The concise display and analysis of vast amounts of information in an easy to interpret layout & interface.”</em></p></Quote>
+    <Quote><p><em>“I’ve tried other platforms like Bloomberg, but Stockopedia just makes things so much easier to understand and use.”</em></p></Quote>
+    <Quote><p><em>“Everything is at my fingertips, and I can navigate the tools without difficulty.”</em></p></Quote>
+    <Figure src="/images/desktop-today-1.png" alt="The redesigned Today page on desktop." wide />
+    <Figure src="/images/iphone13-today.png" alt="The Today page on mobile." wide />
+    <Figure src="/images/desktop-screens.png" alt="The Screens page on desktop." wide />
+    <Figure src="/images/iphone13-screens.png" alt="The Screens page on mobile." wide />
+    <Figure src="/images/desktop-folios.png" alt="The redesigned Folios page on desktop." wide />
+    <Figure src="/images/iphone13-folios.png" alt="The Folios page on mobile." wide />
+  </Step>
+</CaseStudy>

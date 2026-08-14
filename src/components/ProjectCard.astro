@@ -1,0 +1,133 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  description: string;
+  image: string;
+  alt: string;
+  colour: string;
+  align?: 'top' | 'center' | 'bottom';
+}
+
+const { title, href, description, image, alt, colour, align = 'top' } = Astro.props;
+---
+
+<article class="project-card" data-colour={colour} data-align={align}>
+  <a class="project-card__link" href={href}>
+    <figure class="project-card__figure">
+      <img src={image} alt={alt} loading="lazy" decoding="async" />
+    </figure>
+    <h3 class="project-card__title">{title}</h3>
+    <p class="project-card__description">{description}</p>
+  </a>
+  <hr class="separator" />
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  /* One link wraps image, title and description, so the whole card is a single
+     target — better for both pointer and keyboard use than three separate
+     links to the same place. */
+  .project-card__link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-card__link:focus-visible {
+    outline: 2px solid var(--colour-accent);
+    outline-offset: 6px;
+  }
+
+  /* The coloured tile the screenshot sits on. */
+  .project-card__figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    background-color: var(--tile-colour);
+  }
+
+  .project-card[data-colour='blue'] .project-card__figure { --tile-colour: var(--colour-blue); }
+  .project-card[data-colour='sage'] .project-card__figure { --tile-colour: var(--colour-sage); }
+  .project-card[data-colour='light-mauve'] .project-card__figure { --tile-colour: var(--colour-light-mauve); }
+  .project-card[data-colour='orange'] .project-card__figure { --tile-colour: var(--colour-orange); }
+  .project-card[data-colour='green'] .project-card__figure { --tile-colour: var(--colour-green); }
+  .project-card[data-colour='mauve'] .project-card__figure { --tile-colour: var(--colour-mauve); }
+  .project-card[data-colour='grey'] .project-card__figure { --tile-colour: var(--colour-grey); }
+
+  .project-card__figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-card[data-align='top'] .project-card__figure img { align-self: flex-start; }
+  .project-card[data-align='center'] .project-card__figure img { align-self: center; }
+  .project-card[data-align='bottom'] .project-card__figure img { align-self: flex-end; }
+
+  /* Brick-red wash over the screenshot on hover, at 0.6 — as on the original. */
+  .project-card__figure::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--colour-accent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+  }
+
+  .project-card:hover .project-card__figure::after,
+  .project-card:focus-within .project-card__figure::after {
+    opacity: 0.6;
+  }
+
+  .project-card__title {
+    font-family: var(--font-serif);
+    font-size: var(--size-medium);
+    font-weight: 400;
+    padding-top: 0;
+    margin: 0;
+    transition: color var(--transition-fast);
+  }
+
+  .project-card:hover .project-card__title,
+  .project-card:focus-within .project-card__title {
+    color: var(--colour-accent);
+  }
+
+  .project-card__description {
+    font-size: var(--size-small);
+    color: var(--colour-text-muted);
+    margin: 0;
+  }
+
+  /* Scroll-driven reveal, using the original's animation-timeline: view().
+     Browsers without support simply show the card — no JavaScript fallback
+     needed, and nothing is ever left invisible. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .project-card {
+        transform: scale(0.8);
+        opacity: 0;
+        animation: project-card-reveal ease forwards;
+        animation-timeline: view();
+        animation-range: entry;
+      }
+
+      @keyframes project-card-reveal {
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    }
+  }
+</style>

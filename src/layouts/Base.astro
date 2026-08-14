@@ -1,0 +1,60 @@
+---
+// Base layout — every page uses this. Change the header or footer here and it
+// changes everywhere, which is the main reason this is Astro and not ten
+// hand-maintained HTML files.
+
+import '@fontsource/ibm-plex-sans/300.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-sans/400-italic.css';
+import '@fontsource/literata/300.css';
+import '@fontsource/literata/400.css';
+import '@fontsource/literata/500.css';
+import '@fontsource/literata/600.css';
+import '@fontsource/literata/700.css';
+import '@fontsource/literata/400-italic.css';
+import '@fontsource/agbalumo/400.css';
+
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Greg Jackson — UX design portfolio. Head of Design at Stockopedia.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+    <!-- Open Graph, so a link shared on LinkedIn or in a message previews properly -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="page">
+      <Nav />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

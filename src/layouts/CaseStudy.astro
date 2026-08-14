@@ -1,0 +1,45 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  intro?: string;
+}
+const { title, description, intro } = Astro.props;
+---
+
+<Base title={`${title} – gregjackson.design`} description={description}>
+  <article class="case-study">
+    <header class="case-study__header">
+      <h1 class="type-h2">{title}</h1>
+      {intro && <p class="case-study__intro">{intro}</p>}
+    </header>
+    <slot />
+    <footer class="case-study__footer">
+      <hr class="separator" />
+      <p><a href="/">&larr; All projects</a></p>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .case-study__header {
+    padding-block: var(--gap-block) var(--gap-inner);
+  }
+
+  .case-study__intro {
+    max-width: var(--content-width);
+    font-size: var(--size-medium);
+    margin-top: var(--gap-inner);
+  }
+
+  .case-study__footer {
+    padding-top: var(--gap-block);
+  }
+
+  .case-study__footer p {
+    padding-top: var(--gap-inner);
+    font-size: var(--size-small);
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Step from '../components/Step.astro';
+import Quote from '../components/Quote.astro';
+import Figure from '../components/Figure.astro';
+import Gallery from '../components/Gallery.astro';
+---
+
+<CaseStudy title="Sign up & acquisition">
+
+  <Step number="01" title="The problem">
+    <p><strong>Complex and inconsistent pricing model:</strong> The pricing model confuses customers and is technically difficult to maintain.</p>
+    <p><strong>Need for short-term revenue increase:</strong> Long-term, we’d like to introduce tiered plans with more premium features. However, in the short-term we need a strategy to increase average revenue per customer without extensive development work.</p>
+    <p><strong>Limited upsell opportunities:</strong> Currently, the only upsell is additional region coverage. We need to determine if customers are willing to pay more for increased usage limits on key features such as Folios, Screens, and Alerts.</p>
+    <Figure src="/images/kohana-plans-1.png" alt="The original subscription plans page, with its complex pricing model." wide />
+  </Step>
+
+  <Step number="02" title="Research">
+    <h3 class="type-h4">Customer feedback</h3>
+    <p>Several competitors offer global data as standard, making additional regions a difficult upsell.</p>
+    <Quote><p><em>“I am guessing your target is amateur investors like myself. I think you charge way too much for adding on the other regions. This is short sighted in my opinion. I genuinely loved the web page design, top rate.”</em></p></Quote>
+    <p>The affordability of our service depends on an individuals investable wealth. Our subscribers’ investable wealth mostly falls between £50k and £2m. Those at the lower end of this bracket tend to be more price sensitive.</p>
+    <Quote><p><em>“The value of my investments are small relative to price of the service.”</em></p></Quote>
+    <p>From 10,000 subscriber requests in our feedback database, access to additional portfolios emerged as the 9th most sought-after site enhancement. We found a positive correlation between investable wealth and the number of portfolios created.</p>
+    <Quote><p><em>“Is there a limit of ten portfolios? Can I increase this? I would love to be able to buy more capacity here. Ten is quite limited for tracking different strategies.”</em></p></Quote>
+    <h4>Usage data</h4>
+    <p><strong>Subscription demographics:</strong>Almost 60% of subscribers are on a UK and/or US subscription; 35% UK only, 14% US only, 10% UK + US.</p>
+    <p><strong>Current usage limits:</strong> 13% of Folio users were at the current limit of 10, suggesting pent-up demand for more.</p>
+    <p><strong>Portfolio and Screener usage:</strong> We found minimal overlap (16%) between “super fans” of our Portfolio and Screener tools. This indicated that setting usage limits on these features could maximise uptake of a higher-tiered plan from both cohorts.</p>
+    <p><strong>Screen usage analysis:</strong> We decided setting limits at 10, 25 and 50 screens would be most appropriate for plan tiering based on usage data.</p>
+    <Gallery items={[{ src: "/images/subscriptions-1.png", alt: "A breakdown of subscribers by region." }, { src: "/images/folio-count-1.png", alt: "A chart showing how many portfolios subscribers create." }, { src: "/images/superfans-1.png", alt: "Usage data identifying the most active subscribers." }, { src: "/images/screen-usage-data-1.png", alt: "Usage data for the Screens feature." }]} />
+  </Step>
+
+  <Step number="03" title="Ideation & testing">
+    <p>I tested each variant with five participants. Using TryMyUi, I recruited individuals unfamiliar with our service. To ensure they closely matched our target customer profile, each participant completed a screening questionnaire.</p>
+    <h3 class="type-h4">Design variant one</h3>
+    <p>Contained two plan tiers and the value metrics were usage based. Regions were not displayed on the plans page. One region was included in each plan, additional regions were at extra cost.</p>
+    <Figure src="/images/1-edited.png" alt="Design variant one, step one: selecting a plan." caption="01. Select plan" wide />
+    <Figure src="/images/2-edited.png" alt="Design variant one, step two: selecting investment regions." caption="02. Select regions" wide />
+    <Figure src="/images/3-edited.png" alt="Design variant one, step three: creating an account." caption="03. Create account" wide />
+    <Figure src="/images/4-1-edited.png" alt="Design variant one, step four: entering payment details." caption="04. Enter payment details" wide />
+    <Figure src="/images/5-edited.png" alt="Design variant one, step five: confirmation and choosing an investor type." caption="05. Success and select investor type" wide />
+    <Figure src="/images/6-edited.png" alt="The Stockopedia home page after sign-up is complete." caption="06. Task complete: Home page" wide />
+    <h4>Key findings</h4>
+    <p><strong>Comparison table:</strong> Including a comparison table of product features helped users understand our offering, but didn’t do enough to differentiate us from competitors.</p>
+    <Quote><p><em>“… there were links to see more about each feature, which I clicked, but they didn’t do a good job of selling it to me. The features weren’t dissimilar from free investment sites. The owner could do more to distinguish why these features are better and worth the money.”</em></p></Quote>
+    <p><strong>Usage based value metrics:</strong> These did not lead any participant to take the higher-tiered plan.</p>
+    <Quote><p><em>“The tool selection here is very feature rich, and Standard plan is more than I need to get the most out of what I do with stocks.”</em></p></Quote>
+    <p><strong>Pricing transparency:</strong> Participants preferred the transparency of upfront region selection.</p>
+    <Quote><p><em>“I felt more confident when I could pick other countries at the start – makes me feel like it’s more trustworthy.”</em></p></Quote>
+    <Quote><p><em>“If I’m adding the US that’s an additional £180? No, I don’t like that. I feel like you are trying to squeeze more money out of me by doing it that way.”</em></p></Quote>
+    <h4>Design variant two</h4>
+    <p>Contained two tiers with usage-based value metrics. The Standard tier included access to two regions; the Premium had global region coverage.</p>
+    <Figure src="/images/1-1-edited.png" alt="Design variant two, step one: selecting a plan." caption="01. Select plan" wide />
+    <Figure src="/images/2-1-edited.png" alt="Design variant two, step two: creating an account." caption="02. Create account" wide />
+    <Figure src="/images/3-1-edited.png" alt="Design variant two, step three: entering payment details." caption="03. Enter payment details" wide />
+    <Figure src="/images/4-2-edited.png" alt="Design variant two, step four: confirmation and choosing an investor type." caption="04. Success and select investor type" wide />
+    <Figure src="/images/5-2-edited.png" alt="Design variant two, step five: selecting investment regions." caption="05. Select regions" wide />
+    <Figure src="/images/6-edited.png" alt="The Stockopedia home page after sign-up is complete." caption="06. Task complete: Home page" wide />
+    <h4>Key findings</h4>
+    <p><strong>Home market bias:</strong> All participants chose the lower priced plan due to home market bias. Sample size may have also been a factor.</p>
+    <Quote><p><em>“United States. That’s pretty much all I need.”</em></p></Quote>
+    <Quote><p><em>“To start with I would go for the Standard plan at £285, as I predominantly invest in 2 countries anyway. If I needed more, I could upgrade to Premium later.”</em></p></Quote>
+    <Quote><p><em>“Oh, it would definitely be the Standard, I’m not going to need more than 5 custom portfolios or global coverage. I’m just interested in UK and probably US stocks.”</em></p></Quote>
+    <p><strong>Usage metrics:</strong> Participants were feature focussed, increased usage metrics did not entice them to upgrade.</p>
+    <Quote><p><em>“Seems like all the tools are pretty much the same … Don’t see the point in spending the extra $300, when I don’t need all these extra things.”</em></p></Quote>
+    <p><strong>Personalisation:</strong> Participants were excited about the prospect of personalisation during sign-up, indicating a large opportunity here.</p>
+    <Quote><p><em>“I really like this. I didn’t realise that after you choose which type of investor you are, you get to choose what you are interested in. This is really cool! Wow!”</em></p></Quote>
+    <Quote><p><em>“…Oh! Guess I don’t know what I thought I would see … it’s choose your markets, not choose what stocks for the kind of investor I am. I got that wrong.”</em></p></Quote>
+  </Step>
+
+  <Step number="04" title="Refinement">
+    <ul>
+      <li>User testing and surveys of subscribers indicated that usage-based limits on key product features would not encourage users to upgrade to a higher-tiered plan.</li>
+      <li>Introducing new features into the higher-tiered plan would be well received by customers, but the development would take more than 6 months, so it did not align with the goal of increasing next quarter’s average revenue per customer.</li>
+      <li>Most UK-based subscribers exhibit a home market bias, with the US being the most commonly purchased additional region. We focused on simplifying the region pricing, making the UK + US package more affordable.</li>
+      <li>We structured the plans into three tiers based solely on regional coverage: UK in the base tier, UK + US in the mid-tier, and Global in the top tier. By promoting the UK + US plan, we aimed to increase mid-tier adoption and average revenue per customer.</li>
+      <li>We restructured the customer journey to put the plans page before the create account page. This ensured customers knew what they were signing up to.</li>
+      <li>We introduced a “slow lane” for customer who weren’t ready to take out a trial. They could enter their email address to sign up to weekly editorial content.</li>
+    </ul>
+    <Figure src="/images/desktop-plans.png" alt="The refined subscription plans page on desktop." wide />
+  </Step>
+
+  <Step number="05" title="A/B testing">
+    <p>We conducted an A/B test comparing the proposed variant to the current plans page. We saw a significant increase in average customer spend, which gave us the confidence to proceed.</p>
+    <Figure src="/images/ab-test.png" alt="Results from the A/B test of the two sign-up variants." wide />
+  </Step>
+
+  <Step number="06" title="Results">
+    <ul>
+      <li><strong>Plans page design:</strong> We saw an increase in the average number of regions that customers took on sign up, from 2 regions to 3. Resulting in an increase in revenue per customer from £450 to £600 (+33%).</li>
+      <li><strong>Cancellation rates:</strong> We reviewed the results after 30 days and unfortunately saw an increase in churn for customers who took the global plan. We iterated on the design and replaced the global plan with a “customise your coverage” option. Encouraging user to only subscribe to the regions they needed. After this change, we saw a reversion in ARPA, but maintained an increase in credit card trails of 9%.</li>
+      <li><strong>Increased transparency:</strong>By moving the plans page before the create account page, we understandably saw a reduction in accounts created (-21%). However, due to increased transparency, cancellation rates reduced by 15%.</li>
+      <li><strong>Fewer, far more engaged leads:</strong> The reduction in account creation lead to a large reduction in leads, as fewer customers failed at checkout (-50%). However, by using an opt-in approach to lead capture via our editorial newsletter, we have seen a 500% improvement in conversion rates from our leads list.</li>
+    </ul>
+  </Step>
+</CaseStudy>

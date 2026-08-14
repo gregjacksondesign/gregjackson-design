@@ -1,0 +1,53 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Step from '../components/Step.astro';
+import Figure from '../components/Figure.astro';
+import FileDownload from '../components/FileDownload.astro';
+---
+
+<CaseStudy title="Investor Personas">
+
+  <Step number="01" title="Background">
+    <p>Personas are primarily a qualitative tool, they are not an exact science, or a perfect representation of every users behaviour. It’s a way for us to understand and empathise with our users, and to help us make smart decisions and trade-offs when users have conflicting needs.</p>
+    <p>When I joined Stockopedia, the CEO had written about 4 investor archetypes, which he had been inspired to create based on Bartle’s Taxonomy of Game Player types (he was a keen Poker player!).</p>
+    <Figure src="/images/architypes.png" alt="A quadrant chart of four investor archetypes — Trader, Hunter, Farmer and Owner — plotted against active-passive and systematic-discretionary axes, each with a representative investor and playing-card suit." wide />
+    <p>My task was to work with the wider business to bring this to life, ensure buy-in and adoption. I also hoped to identify a primary persona to help with prioritisation and positioning challenges we were facing.</p>
+    <p>I drew on data from hundreds on survey responses (qualitative and quantitative), as well as conducting customer interviews to find out more about our customers investment experience, routines, goals and motivations. I analysed site usage data to test any assumptions the team may have had about how customers used the application.</p>
+    <Figure src="/images/avg-events-by-persona-type-prev-6m-excluding-novice.png" alt="A bar chart comparing average site events by persona type over six months, excluding novice investors." caption="Site usage data across key events" wide />
+  </Step>
+
+  <Step number="02" title="Problems">
+    <p>I prioritised creating personas to help resolve a number of issue that saw the business was facing:</p>
+    <ul>
+      <li><strong>Subjective prioritisation process:</strong> There are many ways investors can succeed. Whether it’s short-term trading based on price and trading volumes (technical analysis), or long-term buy and hold strategies based on detailed analysis of company accounts, and everything in between. With this in mind, the team struggle to decide which of the many features in our backlog we should be building first (if at all).</li>
+      <li><strong>Ineffective product positioning</strong>: The lack of clarity on the type of investors we were targeting made it very difficult for the marketing team to speak directly to the interests and challenges of each user segment. This negatively impacted conversion rates and made it difficult to know where to make contact with the right leads.</li>
+      <li><strong>Limited market differentiation</strong>: Without understanding who our users were, differentiating our research tool from competitors and emphasising unique benefits for our best customers was difficult. This cascaded to the design team who struggled to visualise the brand.</li>
+      <li><strong>Misaligned content</strong>: Writers weren’t sure who they were talking to, leading to educational materials, blogs, and in-app messaging that was not as relevant or engaging as it could have been.</li>
+      <li><strong>Low customer retention</strong>: The service tried to appeal to all investor types. This lack of focus meant the trial experience for new users was overwhelming.</li>
+    </ul>
+  </Step>
+
+  <Step number="03" title="Our 4 personas">
+    <p>I intentionally decided not to create a pristine 1-pager for each persona. I wanted them to be living documents that we reviewed regularly and updated when we gained more information our customers or business/market conditions changed.</p>
+    <p>For this reason that reason they are pages in our note-taking and knowledge management tool Notion. I have exported a PDF of the latest (fourth) versions below:</p>
+    <h3 class="type-h4">1. Tommy: The Over-Trader</h3>
+    <FileDownload href="/files/tommy_the_over-trader.pdf" name="Tommy_The_Over-Trader" />
+    <h4>2. Harry: The Headline Hunter</h4>
+    <FileDownload href="/files/harry-the-headline-hunter.pdf" name="Harry-the-headline-hunter" />
+    <h4>3. Freddie: The Systematic Farmer</h4>
+    <FileDownload href="/files/freddie_the_systematic_farmer.pdf" name="Freddie_The_Systematic_Farmer" />
+    <h4>4. Ian: The Income Investor</h4>
+    <FileDownload href="/files/ian_the_income_investor.pdf" name="Ian_The_Income_Investor" />
+  </Step>
+
+  <Step number="04" title="Results">
+    <p>This work helped the business identify and align behind the primary persona of <strong>Freddie: The Systematic farmer</strong>. By focusing on Freddie, we improved feature prioritisation and, for example, were able to quickly discard any technical analysis features (aimed at Tommy: The Over-Trader).</p>
+    <p>With clear customer personas, the marketing team could efficiently identify and communicate with our best customers. The personas allowed us to target two key groups:</p>
+    <ul>
+      <li><strong>Existing ‘Farmers’</strong>: Those already using factor investing strategies.</li>
+      <li><strong>Potential ‘Farmers’</strong>: Primarily ‘Hunters’ who sought to adopt a more systematic investing approach.</li>
+    </ul>
+    <p>Form here, we refined our overarching  customer journey. By understanding the transition from ‘Hunter’ to ‘Farmer’, we implemented strategic nudges to encourage users towards more systematic investing, improving their investment returns.</p>
+    <Figure src="/images/archetype-journey-title-4-3-1.png" alt="The ideal archetype journey diagram: a quadrant chart with arrows moving investors from active and discretionary towards passive and systematic." wide />
+  </Step>
+</CaseStudy>

@@ -1,0 +1,71 @@
+---
+// A numbered stage in a case study. The number is real information here — the
+// case studies genuinely run in sequence — so it stays.
+//
+// Layout matches the WordPress original: the step label sits in a narrow left
+// column on a rule, with the title and body in the wider column beside it —
+// the same .tag / .meta-row pattern used on About Me and Experience.
+interface Props {
+  number: string;
+  title: string;
+}
+const { number, title } = Astro.props;
+---
+
+<section class="step meta-row">
+  <p class="tag step__number">Step {number}.</p>
+  <div class="step__content">
+    <h2 class="type-h3 step__title">{title}</h2>
+    <div class="step__body">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* The label-to-content gutter comes from .meta-row in global.css — no local
+     override needed now that it matches the original's ~24px.
+
+     Spacing runs one direction only: padding-block on every step meant
+     neighbouring steps each contributed their own, and padding doesn't collapse
+     the way margins do, so the gap between steps came out double. */
+  .step + .step,
+  .step:first-of-type {
+    margin-top: var(--gap-block);
+  }
+
+  /* 0.75rem = 12px, measured off the original. Set in rem rather than px so it
+     still scales if the reader bumps their browser's base font size. */
+  .step__number {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .step__title {
+    margin-bottom: var(--gap-inner);
+  }
+
+  .step__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  /* Two deviations from the site-wide defaults, both measured from the
+     original: body copy fills the full content column (~716px) rather than the
+     620px running-text measure, and the flex gap above provides the vertical
+     rhythm, so paragraphs drop their own bottom margin to avoid doubling up. */
+  .step__body :global(p),
+  .step__body :global(ul),
+  .step__body :global(ol) {
+    max-width: none;
+    margin-bottom: 0;
+  }
+
+  .step__body :global(h3),
+  .step__body :global(h4) {
+    max-width: none;
+  }
+</style>

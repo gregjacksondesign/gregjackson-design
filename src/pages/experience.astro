@@ -1,0 +1,122 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+---
+
+<CaseStudy title="Experience">
+  <div class="meta-row">
+    <p class="tag">Current role</p>
+    <div>
+      <h2 class="type-h4">Head of Design at <a href="https://www.stockopedia.com/">Stockopedia</a></h2>
+      <p class="meta-date">2021 – Present • 3 yrs 7 mos</p>
+      <ul>
+        <li>Lead the design team and manage the backlog whilst helping to shape the product strategy and long-term vision.</li>
+        <li>Successfully developed and drove adoption of a design and discovery process from the ground up.</li>
+        <li>Regularly consulted by the business to help map and resolve complex process issues.</li>
+        <li>Execute all UX design work, ensuring a seamless and consistent experience across every channel and customer journey.</li>
+        <li>Established a structured recruitment process for the business, which has increased objectivity, reduced the duration of the process and improved the quality of hires.</li>
+        <li>My UX work has contributed to achieving an “Excellent” Net Promoter Score, with “Ease of use” being the second most frequently stated promoter comment.</li>
+        <li>Since joining Stockopedia, the platform has been recognised with industry awards for the Best Research Service and Best Investment Tool.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <p class="tag">2018</p>
+    <div>
+      <h2 class="type-h4">UX and UI Designer, <a href="https://www.stockopedia.com/">Stockopedia</a></h2>
+      <p class="meta-date">Mar 2018 – Jan 2021 • 2 yrs 11 mos</p>
+      <ul>
+        <li>Integrated user research into product development process through user tests, customer feedback analysis, and examination of usage data.</li>
+        <li>Created prototypes for ideation, alignment, and testing, as well as high-fidelity UI specifications for development.</li>
+        <li>Established a Design System to ensure consistency and improve the efficiency of the design-developement process.</li>
+        <li>Contributed to a successful application redesign, resulting in the migration of over 15,000 subscribers.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <p class="tag">2015</p>
+    <div>
+      <h2 class="type-h4">UI and Visual Designer, <a href="https://manufacture2030.com/">M2030</a></h2>
+      <p class="meta-date">Jul 2015 – Mar 2018 • 2 yrs 9 mos</p>
+      <p>I designed the Manufacture 2030 platform from an initial concept (driving corporate sustainability), developing brand guidelines and a component library. I also worked on the 2degrees platform and public-facing website for the sustainable business community. Key milestones included working with major suppliers such as Asda-Walmart, GSK, and Unilever, being named in Sustainia’s Top 100, and joining the UN Global Opportunity Explorer.</p>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <p class="tag">2014</p>
+    <div>
+      <h2 class="type-h4">UX Designer: Secondary, <a href="https://www.pearson.com/en-gb.html">Pearson Plc</a></h2>
+      <p class="meta-date">Sept 2014 – Jul 2015 • 11 mos</p>
+      <p>I was the sole Designer for ExamWizard, an online assessment tool specialising in customisable exam papers aligned with educational curricula. I oversaw the entire design process, from wireframes and user testing, to high-fidelity interface designs.</p>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <p class="tag">2013</p>
+    <div>
+      <h2 class="type-h4">UI Designer: Academic &amp; General, <a href="https://www.pearson.com/en-gb.html">Pearson Plc</a></h2>
+      <p class="meta-date">Oct 2013 – Sept 2014 • 1yr</p>
+      <p>I led the design of ActiveTeach, a platform that integrates digital resources for students with front-of-class teaching materials to improve classroom engagement. My primary role was user interface design, with additional responsibilities in UX design and front-end development. I also designed the Pearson Portal, a single sign-on solution for users accessing multiple Pearson products and services.</p>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <p class="tag">2012</p>
+    <div>
+      <h2 class="type-h4">Managing Designer: Primary, <a href="https://www.pearson.com/en-gb.html">Pearson Plc</a></h2>
+      <p class="meta-date">Oct 2012 – Oct 2013 • 1yr 1mo</p>
+      <p>I worked on the award-winning children’s reading programs Bug Club and Wordsmith, which encompass both print publishing and interactive eBooks. My role involved commissioning illustrators, overseeing freelance designers, and providing art direction across various primary education projects. In-house design tasks included storyboarding, typesetting, illustration, vector graphic creation, and creative typography.</p>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <p class="tag">2012</p>
+    <div>
+      <h2 class="type-h4">Graphic Designer (Internship), <a href="https://www.libertylondon.com/">Liberty Ltd</a></h2>
+      <p class="meta-date">April 2012 – Jul 2012 • 4 months</p>
+      <p>I worked in the Graphics studio of this renowned London department store, producing creative design solutions whilst adhering to the Liberty brand guidelines. My work included point of sale displays, events and marketing promotions, product packaging and typographic clothing designs.</p>
+    </div>
+  </div>
+</CaseStudy>
+
+<style>
+  /* .tag and .meta-row are shared utilities in global.css. This page just
+     stacks a run of them — one per role — with the same rhythm About Me
+     uses for its section breaks. */
+  /* Spacing runs one direction only. padding-block on every row meant adjacent
+     rows each contributed their own — and padding doesn't collapse the way
+     margins do — so the gap between roles was double the value set here. */
+  .meta-row + .meta-row {
+    margin-top: var(--gap-block);
+  }
+
+  .meta-row:first-of-type {
+    margin-top: var(--gap-block);
+  }
+
+  /* Headings reset to margin: 0 in global.css, which left the role title and
+     its date line touching. The date is metadata belonging to the title, so it
+     should stay close — this is just enough to read as grouped rather than
+     collided. */
+  .meta-row h2 {
+    margin-bottom: var(--space-8);
+  }
+
+  .meta-date {
+    color: var(--colour-text-muted);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+
+  li {
+    margin-bottom: 0.75em;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+</style>

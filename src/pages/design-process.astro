@@ -1,0 +1,86 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Step from '../components/Step.astro';
+import Figure from '../components/Figure.astro';
+---
+
+<CaseStudy title="Design process">
+
+  <Step number="01" title="The problem">
+    <p><strong>Collaboration and decision making:</strong>Product development relied on the founder’s intuition rather than being evidence-based. New features were added without thorough evaluation and their impact wasn’t measured after release.</p>
+    <p><strong>No mechanism for capturing feedback:</strong>Ideas from the CEO/Founder went directly to the development team without prototyping or user testing. The live site was the primary feedback channel, alongside occasional in-person events. The team only captured new feature requests from subscribers.</p>
+    <p><strong>Lack of design guidelines:</strong> No documented design process or guidelines existed. There was no component library or even high-fidelity design files.</p>
+  </Step>
+
+  <Step number="02" title="Research">
+    <p>The design process at Stockopedia is personalised to the business’s specific needs. However, here are some of the resources I drew inspiration from:</p>
+    <ul>
+      <li>NN/g • Dr. Jakob Nielson and Dr. Don Norman</li>
+      <li>Design Thinking • IDEO</li>
+      <li>Design Sprint • Google Ventures</li>
+      <li>Double Diamond • British Design Council</li>
+      <li>Set-based Design (SBD) • Scaled Agile Framework</li>
+      <li>Creativity, Inc. • Ed Catmull</li>
+    </ul>
+    <Figure src="/images/process-collage-1.png" alt="A collage of design references: books including Creativity Inc, Sprint, Nudge and Drive, alongside double-diamond and diverge-converge diagrams." wide />
+  </Step>
+
+  <Step number="03" title="The process">
+    <h3 class="type-h4">1. Setting business goals</h3>
+    <ul>
+      <li>Define the long-term business goal.</li>
+      <li>Set short-term goals aligned with the long-term goal (updated quarterly).</li>
+    </ul>
+    <h4>2. Defining the problem</h4>
+    <ul>
+      <li>Identify the most important problem to solve right now (business or user).</li>
+      <li>Map the current state and identify opportunities for improvement.</li>
+      <li>Define success and measurement criteria.</li>
+      <li>Identify risks and constraints.</li>
+    </ul>
+    <h4>3. Information gathering</h4>
+    <ul>
+      <li>Collect user insights through interviews and surveys</li>
+      <li>Analyse usage data and competitor solutions.</li>
+      <li>Engage key stakeholders across the business and map customer journeys.</li>
+    </ul>
+    <h4>4. Ideation (diverging)</h4>
+    <ul>
+      <li>Generate a wide range of ideas, encouraging diverse thinking.</li>
+      <li>Focus on concepts, not details, involving the wider team.</li>
+    </ul>
+    <h4>5. Refinement (converging)</h4>
+    <ul>
+      <li>Seek early feedback on <strong>viability, feasibility, and usability</strong>.</li>
+      <li>Refine ideas and create low-fidelity prototypes for user testing</li>
+      <li>Write the user testing script and recruit suitable candidates.</li>
+    </ul>
+    <h4>6. Testing</h4>
+    <ul>
+      <li>Test the prototype with user and based on feedback, choose one of the following paths:
+<strong>Refine:</strong> Positive feedback indicates the solution addresses a real problem. Refine the idea based on key themes from user testing.
+<strong>Return to Ideation:</strong> The problem is validated, but the solution falls short. Use the feedback to generate new ideas.
+<strong>Discard:</strong> Feedback challenges assumptions from the “Defining the problem” stage, indicating this may not be the right problem to solve.</li>
+    </ul>
+    <h4>7. Implementation</h4>
+    <ul>
+      <li>Create high-fidelity UI designs. Use existing patterns/components where possible.</li>
+      <li>Review designs with engineers to ensure alignment and gather feedback.</li>
+      <li>Review acceptance criteria and work closely with engineers to resolve problems that arise during implementation.</li>
+      <li>Perform QA to ensure the final implementation aligns with the intended design and user experience.</li>
+    </ul>
+    <h4>8. Measuring the impact</h4>
+    <ul>
+      <li>Analyse how the release has been receive by users, both comments and usage.</li>
+      <li>Assess if success measures are met and understand reasons if not.</li>
+      <li>If success criteria aren’t met, outline the next steps to achieve them. Alternatively, the business may decide to address any more pressing issues that have arisen.</li>
+      <li>Review the project to identify lessons for improving future development work.</li>
+    </ul>
+  </Step>
+
+  <Step number="04" title="Key insights">
+    <p><strong>Ideation:</strong> Design is inherently collaborative. However, in workshops I’ve found that the ideation phase is most effective when conducted independently, followed by dot voting. This approach avoids groupthink and keeps the workshop focussed.</p>
+    <p><strong>Testing:</strong> Reaching an agreement on what is being tested is crucial. Without it, the results may be disputed by stakeholders. If agreement cannot be reached, multiple options can be tested, though it requires more time.</p>
+    <p><strong>Defining Success and Measuring Impact:</strong> This remains an area for improvement at Stockopedia. While we review product usage and feedback on release notes, there is a tendency to move on to the next project even if the success criteria have not been met.</p>
+  </Step>
+</CaseStudy>

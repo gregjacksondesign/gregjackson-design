@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Design tokens — extracted verbatim from the WordPress (Assembler) theme.
+   Every value here matches the original site. If you want to change the
+   look of the site, this is the only file you need to touch.
+   ========================================================================== */
+
+:root {
+  /* ---- Colour ------------------------------------------------------------
+     The original theme named these theme-1..theme-5 plus a set of custom
+     colours. Renamed here to say what they are, with originals in comments. */
+
+  --colour-background: #fff1e5;   /* theme-1 / custom-background — warm cream */
+  --colour-white: #ffffff;        /* theme-3 */
+  --colour-black: #000000;        /* theme-5 */
+  --colour-accent: #b6463b;       /* theme-2 / custom-link-hover — brick red */
+
+  --colour-text: #000000d9;       /* custom-text-primary  — black at 85% */
+  --colour-text-muted: #000000a6; /* custom-text-secondary — black at 65% */
+
+  /* Project tile / accent palette */
+  --colour-orange: #e49366;
+  --colour-green: #798e7b;
+  --colour-mauve: #b692a1;
+  --colour-grey: #bfccd8;
+  --colour-blue: #c1cee3;
+  --colour-sage: #cbdfd2;
+  --colour-light-mauve: #dec5d0;
+
+  /* ---- Type --------------------------------------------------------------
+     Three families, as on the original site:
+       Literata     — h1, h3, h4 (serif)
+       Agbalumo     — h2 and the current nav item (display)
+       IBM Plex Sans — body, captions, UI
+     All are open-source (OFL) and self-hosted via Fontsource. */
+
+  --font-display: Agbalumo, system-ui, sans-serif;
+  --font-serif: Literata, Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+
+  /* Fluid type scale. These clamp() values are copied exactly from the
+     original theme, so text matches at every viewport width — not just at
+     breakpoints. The middle term interpolates between the two bounds. */
+
+  --size-small: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.179), 16px);
+  --size-medium: clamp(20px, 1.25rem + ((1vw - 3.2px) * 0.357), 24px);
+  --size-large: clamp(23.043px, 1.44rem + ((1vw - 3.2px) * 1.335), 38px);
+  --size-x-large: clamp(33.419px, 2.089rem + ((1vw - 3.2px) * 2.373), 60px);
+  --size-xx-large: clamp(40px, 2.5rem + ((1vw - 3.2px) * 3.571), 80px);
+  --size-xxx-large: clamp(40px, 2.5rem + ((1vw - 3.2px) * 10.714), 160px);
+
+  /* Heading sizes (h1 and h2 share a size on the original site) */
+  --size-h1: clamp(35.2px, 2.2rem + ((1vw - 3.2px) * 2.571), 64px);
+  --size-h2: clamp(35.2px, 2.2rem + ((1vw - 3.2px) * 2.571), 64px);
+  --size-h3: clamp(24.034px, 1.502rem + ((1vw - 3.2px) * 1.426), 40px);
+  --size-h4: clamp(20px, 1.25rem + ((1vw - 3.2px) * 1.071), 32px);
+
+  --line-height-body: 1.6;
+  --line-height-heading: 1.5;
+
+  /* ---- Spacing -----------------------------------------------------------
+     One scale, two tiers. Values are in rem so that spacing grows along with
+     the text if a reader raises their browser's base font size.
+
+     Tier 1 — insets. Padding inside things, and gaps between closely-related
+     items. Fixed across breakpoints: shrinking a component's own padding on a
+     small screen just makes it look mean. Numbers are the px value at the
+     default 16px base (--space-24 is 24px), on a 4px grid.
+
+     This replaces the old WordPress --space-20/30/40 scale, which sat on a
+     25px rhythm and so could never land on a 4px grid. */
+
+  --space-4: 0.25rem;   /* 4px  */
+  --space-8: 0.5rem;    /* 8px  */
+  --space-12: 0.75rem;  /* 12px */
+  --space-16: 1rem;     /* 16px */
+  --space-20: 1.25rem;  /* 20px */
+  --space-24: 1.5rem;   /* 24px */
+  --space-32: 2rem;     /* 32px */
+  --space-48: 3rem;     /* 48px */
+
+  /* Tier 2 — layout. Structural rhythm, and the one place spacing should react
+     to viewport width. Each interpolates smoothly between its value at 375px
+     and its value at 1440px, so there is no breakpoint to maintain and no
+     swapping one step for another by hand. Both ends land on the 4px grid, so
+     what you draw at either width still matches.
+
+     The rem term in each calc() means these also respond to base font size;
+     the vw term does not, so response to text-only zoom is partial. That is
+     the accepted trade-off for fluid spacing. */
+
+  --gap-block: clamp(2rem, calc(0.9437rem + 4.507vw), 5rem);     /* 32 -> 80 */
+  --gap-inner: clamp(1.5rem, calc(0.9718rem + 2.254vw), 3rem);   /* 24 -> 48 */
+  --page-gutter: clamp(1.25rem, calc(0.1056rem + 4.883vw), 4.5rem); /* 20 -> 72 */
+
+  /* ---- Layout ------------------------------------------------------------ */
+
+  --content-width: 620px;  /* measure for running text */
+  --wide-width: 1440px;    /* full page container */
+
+  /* ---- Breakpoints -------------------------------------------------------
+     THE canonical set. There are two, and adding a third should need a reason.
+
+       --bp-md   48rem   (768px)   side-by-side layouts begin
+       --bp-lg   64rem   (1024px)  widest layouts begin
+
+     Two rules. Always min-width, so every stylesheet reads mobile-first: the
+     base rule is the phone case and the query adds the wider layout on top.
+     And always rem, so the layout switches earlier for a reader whose base font
+     size is larger — their text needs the extra room.
+
+     These two properties are documentation only. CSS cannot evaluate var()
+     inside a media query — @media (min-width: var(--bp-md)) is invalid — so the
+     literal has to be repeated in each query. When writing one, copy the value
+     from here and name the breakpoint in a comment so it stays greppable.
+
+     In use: .meta-row, .philosophy-grid and FigureGrid at --bp-md;
+     .projects__grid and Gallery at --bp-lg. */
+
+  --bp-md: 48rem;
+  --bp-lg: 64rem;
+
+  /* ---- Motion ------------------------------------------------------------ */
+
+  --transition-fast: 200ms ease;
+  --transition-medium: 250ms ease;
+}

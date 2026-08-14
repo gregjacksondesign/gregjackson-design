@@ -1,0 +1,456 @@
+/* ==========================================================================
+   Global styles. Ported from the original theme plus the Additional CSS
+   written by hand in the WordPress customiser — the nav underline, the
+   button wipe, the project reveal and the image overlay all came from there.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--colour-background);
+  color: var(--colour-text);
+  font-family: var(--font-body);
+  font-size: var(--size-small);
+  font-weight: 400;
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Headings -----------------------------------------------------------
+   All headings are weight 400 on the original site — a deliberate choice
+   that keeps the serif from shouting. Preserved. */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  line-height: var(--line-height-heading);
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--font-serif);
+  font-size: var(--size-h1);
+}
+
+/* h2 is the site's signature: display face, brick red. */
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  color: var(--colour-accent);
+}
+
+h3 {
+  font-family: var(--font-serif);
+  font-size: var(--size-h3);
+  padding-top: var(--space-16);
+}
+
+h4 {
+  font-family: var(--font-serif);
+  font-size: var(--size-h4);
+  padding-top: var(--space-16);
+}
+
+h5 {
+  font-family: var(--font-serif);
+  font-size: var(--size-medium);
+}
+
+/* ---- Type utilities -----------------------------------------------------
+   Visual size, decoupled from heading level. This lets headings sit at the
+   correct semantic level for screen readers and document outline, while still
+   looking exactly as they did on the original site. Use these when the right
+   heading level and the right size disagree. */
+
+.type-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--size-h1);
+  color: inherit;
+}
+
+.type-h2 {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  color: var(--colour-accent);
+}
+
+.type-h3 {
+  font-family: var(--font-serif);
+  font-size: var(--size-h3);
+  color: inherit;
+  padding-top: var(--space-16);
+}
+
+.type-h4 {
+  font-family: var(--font-serif);
+  font-size: var(--size-h4);
+  color: inherit;
+  padding-top: var(--space-16);
+}
+
+/* ---- Tag / meta row -------------------------------------------------------
+   A small label sitting on a thin accent-coloured rule — used as an eyebrow
+   above the three "Design philosophy" points and the bare section breaks on
+   About Me, and the role/date labels on Experience. Sometimes it carries
+   text, sometimes it's empty and just marks a break; the rule is the same
+   either way. */
+
+.tag {
+  margin: 0;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--colour-accent);
+  font-size: var(--size-small);
+}
+
+/* Pairs a .tag with content in a three-column grid: the tag sits in the
+   first column, the content spans the other two. align-items: start keeps
+   the tag's rule directly under its own text rather than stretching to the
+   height of the content column. */
+.meta-row {
+  display: grid;
+  gap: var(--space-24);
+  align-items: start;
+}
+
+.meta-row > :last-child :is(p, ul, ol) {
+  max-width: var(--content-width);
+}
+
+/* Headings normally carry a top padding to separate them from whatever
+   precedes them in the flow. Here the .tag plays that separating role
+   instead, so the first heading in the content column needs to sit flush
+   with the top of the row to line up with the tag. */
+.meta-row > :last-child > :is(h1, h2, h3, h4) {
+  padding-top: 0;
+}
+
+/* Single column by default; the label moves alongside its content at --bp-md.
+   See the breakpoint note in tokens.css. */
+@media (min-width: 48rem) {
+  .meta-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .meta-row > :last-child {
+    grid-column: span 2;
+  }
+}
+
+p {
+  margin: 0 0 1.5em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* The original set strong to weight 400, so emphasis reads as a change of
+   voice rather than a change of weight. Kept. */
+strong {
+  font-weight: 400;
+}
+
+/* ---- Links --------------------------------------------------------------- */
+
+a {
+  color: inherit;
+  text-decoration: underline solid 1px;
+  text-decoration-color: var(--colour-accent);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--colour-accent);
+  transition: color var(--transition-fast);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--colour-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- Layout -------------------------------------------------------------- */
+
+.page {
+  max-width: var(--wide-width);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+/* Constrained measure for running text, breaking out to full width when a
+   child opts in with .wide */
+.flow > * {
+  max-width: var(--content-width);
+}
+
+.flow > .wide {
+  max-width: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--colour-accent);
+  color: var(--colour-background);
+  padding: var(--space-12) var(--space-20);
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: var(--page-gutter);
+}
+
+/* Available to screen readers, invisible on screen. For labelling an icon-only
+   control with real text rather than an aria-label. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Site header --------------------------------------------------------- */
+
+/* Row and column gaps are set separately on purpose. The column gap only
+   applies when the logo and nav sit side by side, so it can stay generous; the
+   row gap only applies once the header wraps and the nav drops below the logo,
+   where the same value is far too much — especially as .nav-link already
+   contributes 12px of its own top padding for touch. */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--gap-inner);
+  row-gap: var(--space-8);
+  padding-block: var(--gap-inner);
+  flex-wrap: wrap;
+}
+
+/* Sticky from --bp-md up only. There the header is a small share of a tall
+   viewport, so keeping the nav reachable through a 1,700-word case study costs
+   almost nothing. Below --bp-md the header is around 138px — too much of a
+   phone screen to freeze — so it scrolls away, and mobile users have
+   scroll-to-top gestures as a fallback. Making it sticky on mobile too means
+   compacting the header first; see the note in the handover. */
+@media (min-width: 48rem) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    /* Opaque, so content passes cleanly behind rather than showing through. */
+    background-color: var(--colour-background);
+  }
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: var(--size-small);
+}
+
+.site-logo img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* Baseline, so the 19px display-face current-page item sits on a shared
+   baseline with its 16px neighbours. The LinkedIn icon opts out of that below —
+   an icon has no baseline worth aligning to. */
+.site-nav {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+}
+
+/* Roomier once there's width for it. Below --bp-md the tighter gap is what
+   keeps the three labels plus the LinkedIn icon on a single row at 375px —
+   nav items wrapping onto a second line looks unresolved. */
+@media (min-width: 48rem) {
+  .site-nav {
+    gap: var(--gap-inner);
+  }
+}
+
+/* Nav links: a 1px rule that wipes in from the bottom-left on hover.
+   Straight from the original Additional CSS.
+
+   The padding is for touch: the text alone is only about 26px tall, short of
+   the 44px target Apple's guidelines and WCAG's enhanced criterion both use.
+   The underline is pulled back up by the same amount so it stays tight against
+   the text instead of dropping to the bottom of the padded box. */
+.nav-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  padding-block: var(--space-12);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: var(--space-12);
+  left: 0;
+  background-color: var(--colour-accent);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform var(--transition-fast);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* The current page is marked by switching to the display face — an unusual
+   and rather good choice, so it stays. */
+.nav-link[aria-current='page'] {
+  color: var(--colour-accent);
+  font-family: var(--font-display);
+  font-size: 19px;
+}
+
+/* Current page keeps the rule permanently, drawn with the same pseudo-element
+   as the hover wipe so it sits at the same height. A border-bottom would drop
+   to the bottom of the padded box, away from the text. */
+.nav-link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+/* LinkedIn: an outbound link rather than a page, so it reads as the [in] mark.
+   The mark must stay black — LinkedIn's brand guidelines permit only blue,
+   black and white, so it can't take the accent colour on hover the way the
+   text links do, and the fill is set explicitly rather than inheriting
+   currentColor. Hover is signalled with opacity instead. */
+/* inline-block, not inline-flex: it needs a real line box so the flex container
+   above has a text baseline to align it by, same as the word links. */
+.nav-link--icon {
+  display: inline-block;
+}
+
+/* vertical-align: middle centres the mark on the parent's x-height midpoint
+   rather than sitting it on the baseline, which is what makes it read as
+   optically centred against the words. Preferred over a hardcoded translateY
+   because the offset comes from the font's own metrics — it stays right if the
+   nav type size changes. */
+.nav-link--icon svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  fill: var(--colour-black);
+  transition: opacity var(--transition-fast);
+}
+
+.nav-link--icon:hover svg {
+  opacity: 0.6;
+}
+
+.nav-link--icon::after {
+  display: none;
+}
+
+/* ---- Buttons ------------------------------------------------------------
+   Outline button with a brick-red fill that wipes in from the left, the
+   label flipping to cream as it passes. */
+
+.button {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: var(--space-12) var(--space-24);
+  border: 1px solid var(--colour-accent);
+  color: var(--colour-accent);
+  text-decoration: none;
+  font-size: var(--size-small);
+  isolation: isolate;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--colour-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-medium);
+  z-index: -1;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button span {
+  position: relative;
+  transition: color var(--transition-medium);
+}
+
+.button:hover span {
+  color: var(--colour-background);
+}
+
+/* ---- Separator ----------------------------------------------------------- */
+
+.separator {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--colour-black) 15%, transparent);
+  margin: 0;
+}
+
+/* ---- Figures ------------------------------------------------------------- */
+
+figure {
+  margin: 0;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  margin-top: var(--space-12);
+  font-size: var(--size-small);
+  color: var(--colour-text-muted);
+}
+
+/* ---- Motion -------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

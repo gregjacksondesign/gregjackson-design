@@ -1,0 +1,46 @@
+---
+// Replaces the WordPress File block: a named document with a download link.
+interface Props {
+  href: string;
+  name: string;
+}
+const { href, name } = Astro.props;
+---
+
+<p class="file">
+  <a class="file__link" href={href} download>
+    <span class="file__name">{name}</span>
+    <span class="file__action">Download PDF</span>
+  </a>
+</p>
+
+<style>
+  .file {
+    margin: 0;
+  }
+
+  .file__link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+    text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--colour-black) 20%, transparent);
+    padding: var(--space-12) var(--space-16);
+    font-size: var(--size-small);
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .file__link:hover {
+    border-color: var(--colour-accent);
+    color: var(--colour-accent);
+  }
+
+  .file__action {
+    color: var(--colour-text-muted);
+  }
+
+  .file__link:hover .file__action {
+    color: var(--colour-accent);
+  }
+</style>

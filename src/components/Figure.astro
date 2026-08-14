@@ -1,0 +1,42 @@
+---
+// An image with an optional caption. `wide` breaks it out of the text measure.
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  wide?: boolean;
+  tile?: string;
+}
+const { src, alt, caption, wide = false, tile } = Astro.props;
+---
+
+<figure class:list={['figure', { 'figure--wide': wide }]} data-tile={tile}>
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .figure {
+    margin: 0;
+    max-width: var(--content-width);
+  }
+
+  .figure--wide {
+    max-width: none;
+  }
+
+  .figure[data-tile] {
+    padding: var(--gap-inner);
+  }
+
+  .figure[data-tile='blue'] { background-color: var(--colour-blue); }
+  .figure[data-tile='sage'] { background-color: var(--colour-sage); }
+  .figure[data-tile='light-mauve'] { background-color: var(--colour-light-mauve); }
+  .figure[data-tile='grey'] { background-color: var(--colour-grey); }
+
+  .figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

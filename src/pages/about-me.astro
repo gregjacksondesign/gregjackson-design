@@ -1,0 +1,84 @@
+---
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Quote from '../components/Quote.astro';
+---
+
+<CaseStudy title="About me">
+  <h2 class="type-h3">Design philosophy</h2>
+
+  <div class="philosophy-grid">
+    <div class="philosophy-item">
+      <p class="tag">&gt; Complex problems</p>
+      <p>I love to work on complex and ambiguous problems, this it what makes design exciting! I speak with customers every week, and utilise customer journey mapping and usage data analysis to ensure changes are widely adopted.</p>
+    </div>
+    <div class="philosophy-item">
+      <p class="tag">&gt; Collaboration</p>
+      <p>I strongly believe that great design doesn’t happen in isolation. The team is smarter than any individual, so I always work cross-functionally to reach a consensus when solving difficult problems. Frequently using Design Sprints to reduce discovery times.</p>
+    </div>
+    <div class="philosophy-item">
+      <p class="tag">&gt; Details in context</p>
+      <p>I really enjoy crafting the details, but always remain mindful of their context. I’ve created design guidelines and UI libraries to streamline the design process and ensure consistently high standards.</p>
+    </div>
+  </div>
+
+  <div class="meta-row section-row">
+    <p class="tag" aria-hidden="true">&gt;</p>
+    <div>
+      <h3>How I work</h3>
+      <p>I’m a UX Design lead with over 12 years of experience in financial services, sustainable manufacturing, and educational tools. I specialise in creating intuitive user interfaces for data-rich applications, balancing the needs of the business and its customers. User testing, surveys, and usage data analysis ensures that my designs are both user-centred and data-driven.</p>
+      <p>I’m confident managing others and excel in stakeholder management, allowing me to collaborate with peers to solve complex problems. My expertise extend beyond product design, as I’m frequently called upon to map and resolve complex process issues. I’ve established design processes, overseen the creation of design libraries and guidelines, and led company wide Design Sprints. My ability to provide candid and constructive feedback, whether to the CEO or line reports, helps foster a culture of continuous improvement.</p>
+      <p>My collaborative approach streamlines discovery, minimises rework and consistently raises the bar for product design. By encouraging innovation, I have made significant contributions to achieving business goals and enhancing team dynamics. Whether through honest conversations, process optimisation, or initiatives like a design-related book club, I am committed to exploring new possibilities, and ensure every project I work on reaches its full potential.</p>
+    </div>
+  </div>
+
+  <div class="meta-row section-row">
+    <p class="tag" aria-hidden="true">&gt;</p>
+    <div>
+      <h3>From my colleagues</h3>
+      <Quote attribution="Daniel Smith, Project Manager @ Stockopedia">
+        <p><em>“Greg is excellent at fostering innovation within different teams, which has positively contributed to business goals and the wider team. He encourages me to think outside the box and challenges the status quo, leading to the development of more efficient processes and better outcomes. By creating a culture of creativity and experimentation, Greg has inspired us to push boundaries and explore new possibilities.”</em></p>
+      </Quote>
+    </div>
+  </div>
+</CaseStudy>
+
+<style>
+  /* .tag and .meta-row are shared utilities in global.css — this page only
+     adds its own grid (three independent items side by side, rather than
+     .meta-row's label-plus-content pairing) and spacing. */
+  .philosophy-grid {
+    display: grid;
+    gap: var(--gap-block);
+    align-items: start;
+    margin-block: var(--gap-inner) var(--gap-block);
+  }
+
+  /* Stacked by default, three across from --bp-md up. */
+  @media (min-width: 48rem) {
+    .philosophy-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* The label-to-rule gap is set on the shared `.tag` in global.css, but the
+     dev server was re-applying an older, looser value after hot reload. These
+     two-class selectors outrank a bare `.tag`, so the gap holds either way.
+     Once global.css is reliably picked up this can go back to inheriting. */
+  .philosophy-item .tag,
+  .section-row .tag {
+    padding-bottom: 0.3em;
+  }
+
+  .philosophy-item .tag {
+    margin-bottom: var(--gap-inner);
+  }
+
+  .philosophy-item p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* One direction only, as on Experience — see the note there. */
+  .section-row {
+    margin-top: var(--gap-block);
+  }
+</style>
