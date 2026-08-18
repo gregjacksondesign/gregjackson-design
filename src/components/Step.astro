@@ -34,17 +34,12 @@ const { number, title } = Astro.props;
     margin-top: var(--gap-block);
   }
 
-  /* 0.75rem = 12px, measured off the original. Set in rem rather than px so it
-     still scales if the reader bumps their browser's base font size. */
-  .step__number {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
+  /* Heading-to-body is a tight, within-block relationship rather than a gap
+     between independent sections, so it takes a fixed inset (--space-16)
+     rather than the fluid --gap-inner — same reasoning as the hero's
+     byline-to-intro gap and Experience's heading-to-body gap. */
   .step__title {
-    margin-bottom: var(--gap-inner);
+    margin-bottom: var(--space-16);
   }
 
   .step__body {

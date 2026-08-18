@@ -104,25 +104,60 @@ h5 {
 /* ---- Tag / meta row -------------------------------------------------------
    A small label sitting on a thin accent-coloured rule — used as an eyebrow
    above the three "Design philosophy" points and the bare section breaks on
-   About Me, and the role/date labels on Experience. Sometimes it carries
-   text, sometimes it's empty and just marks a break; the rule is the same
-   either way. */
+   About Me, the role/date labels on Experience, and the step numbers on
+   every case study. One shared typographic treatment for all of them: small,
+   tracked-out caps, so it reads as a label rather than running text —
+   uppercase reads fine here precisely because it's short and tracked; it
+   would be shouting at body-text size and weight. This used to live only as
+   a local override on Step's step number; moved here so About Me and
+   Experience pick it up too, instead of drifting to their own plain-text
+   version of the same job. */
 
 .tag {
   margin: 0;
   padding-bottom: 0.3em;
   border-bottom: 1px solid var(--colour-accent);
-  font-size: var(--size-small);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* Pairs a .tag with content in a three-column grid: the tag sits in the
    first column, the content spans the other two. align-items: start keeps
    the tag's rule directly under its own text rather than stretching to the
-   height of the content column. */
+   height of the content column — the content column can run much taller
+   than the tag once bullets or paragraphs follow, so centering the whole
+   row would push the tag far past the heading it belongs next to. */
 .meta-row {
   display: grid;
   gap: var(--space-24);
   align-items: start;
+}
+
+/* Nudges the tag down so its rule sits at the vertical centre of the
+   heading beside it, rather than level with the heading's top edge (which
+   is what align-items: start on its own gives you, and reads as the tag
+   floating above the heading rather than belonging to it).
+
+   The rule sits at the bottom of the tag's own box, which is its line box
+   (font size times the body line-height it inherits) plus its own
+   padding-bottom (0.3em — see .tag above). Centre-of-heading minus that
+   full height gives the margin-top needed to land the rule exactly there.
+   Assumes the content column's first heading is a type-h3 — see the note
+   on type-h3 in the type scale above.
+
+   Only meaningful once the row is actually side-by-side, at --bp-md —
+   below that the tag stacks above the heading rather than beside it, so
+   this would just be an odd, unrelated gap. */
+@media (min-width: 48rem) {
+  .meta-row > .tag {
+    margin-top: calc(
+      (var(--size-h3) * var(--line-height-heading)) / 2
+      - 0.75rem * var(--line-height-body)
+      - 0.225rem
+    );
+  }
 }
 
 .meta-row > :last-child :is(p, ul, ol) {
