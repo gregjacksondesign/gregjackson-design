@@ -4,10 +4,17 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <hr class="separator" />
+
+  {/* The one action a portfolio actually needs a button for. Everything else
+      on the site is browsing; this is the moment someone decides to act. */}
+  <p class="site-footer__cta">
+    <a class="button" href="mailto:gw.jackson01@gmail.com"><span>Get in touch &nbsp;&rarr;</span></a>
+  </p>
+
   <div class="site-footer__inner">
-    <p>Greg Jackson &middot; UX design &middot; {year}</p>
+    <p>Greg Jackson &middot; Product design &middot; {year}</p>
     <p>
-      <a href="http://www.linkedin.com/in/gregory-w-jackson" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/gregory-w-jackson" rel="noopener" target="_blank">LinkedIn</a>
     </p>
   </div>
 </footer>
@@ -16,6 +23,11 @@ const year = new Date().getFullYear();
   .site-footer {
     margin-top: var(--gap-block);
     padding-bottom: var(--gap-block);
+  }
+
+  .site-footer__cta {
+    margin: 0;
+    padding-top: var(--gap-inner);
   }
 
   .site-footer__inner {

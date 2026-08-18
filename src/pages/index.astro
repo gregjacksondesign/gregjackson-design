@@ -5,19 +5,17 @@ import { projects } from '../data/projects.js';
 ---
 
 <Base
-  title="gregjackson.design – UX design portfolio"
-  description="Greg Jackson — Lead UX Designer with over 14 years of experience in financial services, sustainable manufacturing and educational tools. Currently Head of Design at Stockopedia."
+  title="gregjackson.design – product design portfolio"
+  description="Greg Jackson — product designer. Eight years building and running design at Stockopedia, turning the complex world of financial markets into something anyone can understand."
 >
   <section class="hero">
     <h1>Greg Jackson</h1>
+    <p class="hero__role">Product designer &middot; UK, remote</p>
     <p class="hero__intro">
-      Lead UX Designer with over 14 years of experience in financial services,
-      sustainable manufacturing, and educational tools. I’m currently Head of
-      Design at Stockopedia, where I help private investors make sense of the
-      complex world of financial markets.
-    </p>
-    <p>
-      <a class="button" href="/experience/"><span>Design experience &nbsp;&rarr;</span></a>
+      I help people find the signal in the noise. Turning the complex world of
+      financial markets into something a complete beginner can make sense of
+      and actually enjoy — that's been my job for the last eight years,
+      building and running design at Stockopedia.
     </p>
   </section>
 
@@ -36,13 +34,37 @@ import { projects } from '../data/projects.js';
      ran to about 84 characters, which read long, and 40rem here read short at
      about 53. */
   .hero {
-    padding-block: var(--gap-block);
+    /* Top and bottom deliberately differ. The gap down to Projects stays at
+       --gap-block — that's the space doing the "new block" work, and it's
+       also what keeps the first card peeking above the fold on desktop.
+       The gap up to the header drops one step to --gap-inner: with a quiet
+       header above it, the larger token read as more of a pause than the
+       identical --gap-block reads below the intro. */
+    padding-top: var(--gap-inner);
+    padding-bottom: var(--gap-block);
     max-width: 48rem;
   }
 
+  /* The quiet metadata treatment from the original hero line, not the
+     accent-rule .tag — a red underline read as too much emphasis for a
+     byline sitting directly under the name. */
+  .hero__role {
+    margin-top: var(--space-12);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--colour-text-muted);
+  }
+
+  /* Tight, fixed gap from the byline above — this is one identity block
+     (name, role, intro), not a run of independent sections, so it takes an
+     inset-tier value rather than --gap-inner's block-level spacing.
+     margin-bottom: 0 because this is now the last thing in .hero — the
+     section's own padding-block closes the gap below. Doubling up here would
+     repeat the padding-block bug from Experience/About. */
   .hero__intro {
     font-size: var(--size-medium);
-    margin-block: var(--gap-inner);
+    margin-block: var(--space-16) 0;
   }
 
   .projects {

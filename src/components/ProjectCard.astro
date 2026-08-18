@@ -2,14 +2,15 @@
 interface Props {
   title: string;
   href: string;
-  description: string;
+  outcome: string;
+  description?: string;
   image: string;
   alt: string;
   colour: string;
   align?: 'top' | 'center' | 'bottom';
 }
 
-const { title, href, description, image, alt, colour, align = 'top' } = Astro.props;
+const { title, href, outcome, image, alt, colour, align = 'top' } = Astro.props;
 ---
 
 <article class="project-card" data-colour={colour} data-align={align}>
@@ -18,7 +19,9 @@ const { title, href, description, image, alt, colour, align = 'top' } = Astro.pr
       <img src={image} alt={alt} loading="lazy" decoding="async" />
     </figure>
     <h3 class="project-card__title">{title}</h3>
-    <p class="project-card__description">{description}</p>
+    {/* The outcome, not the brief — what a reader needs in their first few
+        seconds. See the note in src/data/projects.js. */}
+    <p class="project-card__description">{outcome}</p>
   </a>
   <hr class="separator" />
 </article>
