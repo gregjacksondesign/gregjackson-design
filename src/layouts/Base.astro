@@ -37,6 +37,8 @@ const { title, description = 'Greg Jackson — UX design portfolio. Head of Desi
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Open Graph, so a link shared on LinkedIn or in a message previews properly -->
     <meta property="og:type" content="website" />
