@@ -77,9 +77,11 @@ import Gallery from '../components/Gallery.astro';
     <Quote><p><em>“The concise display and analysis of vast amounts of information in an easy to interpret layout & interface.”</em></p></Quote>
     <Quote><p><em>“The structure of the website is well designed and easy to understand. This is complimented by the useful series of seminars.”</em></p></Quote>
     <p>Since the release of the new application, we’ve won several investment awards, as voted for by the UK private investor community:</p>
-    <Figure src="/images/investor-mag.png" alt="Stockopedia featured in an investment magazine." wide />
-    <Figure src="/images/money-week-award.jpg" alt="The MoneyWeek award won by Stockopedia." wide />
-    <Figure src="/images/gmg-winner.png" alt="An industry award won by Stockopedia." wide />
+    <div class="award-grid">
+      <Figure src="/images/investor-mag.png" alt="Stockopedia featured in an investment magazine." />
+      <Figure src="/images/money-week-award.jpg" alt="The MoneyWeek award won by Stockopedia." />
+      <Figure src="/images/gmg-winner.png" alt="An industry award won by Stockopedia." />
+    </div>
     <p>The new website has enabled faster product development, due to the improved technical infrastructure. It was built from scratch as a modern “single-page application” backed by a RESTful API. Moving away from the original PHP application allowed for faster iteration and supported more modern web technologies.</p>
     <p>We developed a <a href="https://web.dev/articles/what-are-pwas">Progressive Web App</a> to enable users to access the site on mobile devices. The design was optimised to ensure a good experience across all resolutions and was adopted by 25% of our user base.</p>
   </Step>
@@ -95,3 +97,33 @@ import Gallery from '../components/Gallery.astro';
     <p>In future projects, I would advocate for an iterative approach, ensuring continuous user engagement and visible improvements to maintain user satisfaction and justify development efforts.</p>
   </Step>
 </CaseStudy>
+
+<style>
+  /* Three small award badges, previously each rendered at full column width
+     via Figure's `wide` prop — fine for a wireframe, but these are
+     logo-sized images, so full width blew them up hugely.
+
+     An equal-width grid was tried first and didn't work once the real
+     images were in: one badge is a near-circular seal, the other two are
+     flat rectangular banners, so forcing them to the same WIDTH forced the
+     circular one much taller, and the row's height (set by its tallest
+     item) left the two banners stranded in a lot of empty space.
+
+     Flex + a shared height is the normal fix for a mixed-shape logo row:
+     align on height instead, and let each badge keep its own width. Figure's
+     own img rule (width: 100%, height: auto) is scoped to Figure.astro, so
+     it needs :global() plus an extra class to out-specify it here. */
+  .award-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-inner);
+  }
+
+  .award-grid :global(.figure img) {
+    width: auto;
+    height: 88px;
+    max-width: 100%;
+  }
+</style>
